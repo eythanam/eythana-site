@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>Eythana Miller — Writer &amp; Oral Historian</title>
+  <meta name="description" content="Writing and oral history by Eythana Miller." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,650&amp;family=Public+Sans:wght@400;500;650&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper: #f4f1ea;
+      --surface: #fffdf7;
+      --ink: #171615;
+      --muted: #5a5653;
+      --line: #cbc5bc;
+      --line-strong: #857d74;
+      --burgundy: #8b2032;
+      --chartreuse: #dce99a;
+      --navy: #15253d;
+      --deep-brown: #33231f;
+      --rust: #7d1d2d;
+      --ochre: #91651f;
+      --hover-wash: #e8dade;
+      --feature-bg: #121825;
+      --feature-ink: #f7f2e8;
+      --feature-muted: #c9c2b8;
+      --section-heading-bg: #dce99a;
+      --section-heading-ink: #33231f;
+      --category-heading-bg: #8b2032;
+      --category-heading-ink: #fff8ef;
+      --margin-panel: clamp(48px, 6.3vw, 92px);
+      --page-gutter: clamp(28px, 4vw, 54px);
+      --shadow: 0 18px 48px rgba(22, 27, 22, .08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #151313;
+        --surface: #1d1a19;
+        --ink: #f3ede5;
+        --muted: #c2b9b1;
+        --line: #433b38;
+        --line-strong: #796c66;
+        --burgundy: #8f2638;
+        --chartreuse: #d1e681;
+        --navy: #10213a;
+        --deep-brown: #2d1d19;
+        --rust: #e097a6;
+        --ochre: #d5ad5f;
+        --hover-wash: #35242a;
+        --feature-bg: #090d16;
+        --feature-ink: #f7f2e8;
+        --feature-muted: #c9c2b8;
+        --section-heading-bg: #d1e681;
+        --section-heading-ink: #211b18;
+        --category-heading-bg: #8f2638;
+        --category-heading-ink: #fff8ef;
+        --shadow: 0 18px 48px rgba(0, 0, 0, .28);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Public Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: 2;
+      top: 0;
+      bottom: 0;
+      width: var(--margin-panel);
+      background: linear-gradient(
+        90deg,
+        var(--burgundy) 0 33.333%,
+        var(--chartreuse) 33.333% 66.667%,
+        var(--burgundy) 66.667% 100%
+      );
+      pointer-events: none;
+    }
+    body::before { left: 0; }
+    body::after { right: 0; }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:hover { color: var(--rust); }
+    button { font: inherit; }
+    .shell {
+      width: min(1060px, calc(100% - (var(--margin-panel) * 2) - (var(--page-gutter) * 2)));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .identity {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .76rem;
+      letter-spacing: .03em;
+      color: var(--muted);
+    }
+    nav { display: flex; align-items: center; gap: 24px; }
+    nav a {
+      text-decoration: none;
+      font-size: .84rem;
+      font-weight: 650;
+    }
+
+    .hero {
+      position: relative;
+      max-width: 880px;
+      padding: clamp(64px, 10vw, 118px) 0 72px;
+    }
+    .kicker {
+      margin: 0 0 20px;
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--rust);
+      font-size: .76rem;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 790px;
+      margin-bottom: 28px;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: clamp(3.1rem, 6vw, 5.8rem);
+      line-height: .91;
+      letter-spacing: -.045em;
+      font-weight: 500;
+    }
+    .hero-intro {
+      max-width: 650px;
+      font-size: clamp(1.08rem, 1.7vw, 1.35rem);
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .section {
+      padding: 76px 0;
+      border-top: 1px solid var(--line);
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 38px;
+    }
+    .section-number {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .76rem;
+      color: var(--rust);
+    }
+    .section h2 {
+      display: inline-block;
+      justify-self: start;
+      margin: 0;
+      padding: .18em .34em .14em;
+      background: var(--section-heading-bg);
+      color: var(--section-heading-ink);
+      font-family: "Public Sans", sans-serif;
+      font-size: clamp(1.65rem, 2.6vw, 2.55rem);
+      line-height: 1;
+      font-weight: 650;
+      letter-spacing: -.035em;
+    }
+
+    a:focus-visible { outline: 3px solid var(--ochre); outline-offset: 3px; }
+
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 70px;
+    }
+    .featured-piece,
+    .project-card {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 180px;
+      gap: 28px;
+      align-items: start;
+      padding: clamp(30px, 4vw, 48px);
+    }
+    .featured-piece {
+      border-top: 8px solid var(--chartreuse);
+      background: var(--feature-bg);
+      color: var(--feature-ink);
+    }
+    .featured-piece .meta { color: var(--feature-muted); }
+    .featured-piece h3 {
+      max-width: 650px;
+      margin: 0 0 12px;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: clamp(2.25rem, 4.2vw, 4.35rem);
+      line-height: .96;
+      letter-spacing: -.03em;
+      font-weight: 500;
+    }
+    .featured-piece p { max-width: 640px; margin: 0; color: var(--feature-muted); }
+    .featured-piece .read { color: var(--feature-ink); }
+    .featured-piece .read:hover { color: var(--chartreuse); }
+    .project-card {
+      background: var(--burgundy);
+      color: #fff8ef;
+    }
+    .project-card .meta { color: #f1c9d0; }
+    .project-card h2 {
+      display: block;
+      justify-self: stretch;
+      margin: 0 0 12px;
+      padding: 0;
+      background: transparent;
+      color: #fff8ef;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 3.4rem);
+      line-height: .98;
+      font-weight: 500;
+      letter-spacing: -.025em;
+    }
+    .project-card p { margin-bottom: 0; color: #f5e6e8; }
+    .project-card p + p { margin-top: 14px; }
+    .project-card .project-link {
+      justify-self: end;
+      color: #fff8ef;
+    }
+    .project-card .project-link:hover { color: var(--chartreuse); }
+
+    .category-block { scroll-margin-top: 28px; }
+    .category-block + .category-block { margin-top: 70px; }
+    .category-head {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 28px;
+      align-items: baseline;
+      margin: 0 0 20px;
+    }
+    .category-count {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .72rem;
+      color: var(--muted);
+    }
+    .category-head h3 {
+      display: inline-block;
+      justify-self: start;
+      margin: 0;
+      padding: 8px 12px 7px;
+      background: var(--category-heading-bg);
+      color: var(--category-heading-ink);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: clamp(.9rem, 1.3vw, 1.08rem);
+      line-height: 1.15;
+      font-weight: 500;
+      letter-spacing: .01em;
+    }
+    .articles { border-top: 1px solid var(--line-strong); }
+    .article {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr) 150px;
+      gap: 28px;
+      align-items: start;
+      padding: 27px 0 30px;
+      border-bottom: 1px solid var(--line);
+      transition: background-color .18s ease;
+    }
+    .article:hover { background: color-mix(in srgb, var(--hover-wash) 58%, transparent); }
+    .article[hidden] { display: none; }
+    .meta {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .72rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .article h4 {
+      margin: 0 0 8px;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: clamp(1.55rem, 3vw, 2.45rem);
+      line-height: 1.05;
+      font-weight: 500;
+    }
+    .article p { max-width: 690px; margin: 0; color: var(--muted); font-size: .92rem; }
+    .read {
+      justify-self: end;
+      font-size: .82rem;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+    .category-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 10px 0 8px;
+      border: 0;
+      border-bottom: 1px solid currentColor;
+      background: transparent;
+      color: var(--rust);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .74rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .category-toggle::after { content: "+"; font-size: 1rem; line-height: 1; }
+    .category-toggle[aria-expanded="true"]::after { content: "−"; }
+    .category-toggle:hover { color: var(--ink); }
+    .project-link { display: inline-block; font-weight: 650; }
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(250px, .55fr);
+      gap: clamp(40px, 8vw, 110px);
+    }
+    .about-copy {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: clamp(1.35rem, 2.25vw, 2rem);
+      line-height: 1.4;
+    }
+    .about-note { color: var(--muted); font-size: .92rem; }
+    .about-note strong { color: var(--ink); }
+    .contact-line {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-top: 38px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: .9rem;
+    }
+    .contact-label {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .72rem;
+      color: var(--muted);
+    }
+    .contact-line a { font-weight: 650; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 28px 0 42px;
+      border-top: 1px solid var(--line);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --margin-panel: 12px;
+        --page-gutter: 16px;
+      }
+      .topbar { min-height: 74px; padding: 12px 0; }
+      .identity { display: none; }
+      nav { width: 100%; justify-content: flex-start; gap: 8px 18px; flex-wrap: wrap; }
+      nav a { font-size: .76rem; }
+      .hero { padding: 58px 0 54px; }
+      h1 { max-width: 100%; font-size: clamp(2.8rem, 13vw, 4.25rem); }
+      .section { padding: 54px 0; }
+      .section-head, .category-head, .article, .about { grid-template-columns: 1fr; }
+      .section-head, .category-head { gap: 10px; }
+      .spotlight-grid { margin-bottom: 54px; }
+      .featured-piece, .project-card { grid-template-columns: 1fr; gap: 22px; padding: 28px 24px 30px; }
+      .featured-piece .read,
+      .project-card .project-link { justify-self: start; }
+      .project-card h2 { max-width: 12ch; }
+      .project-card .project-copy { max-width: 46rem; }
+      .article { gap: 10px; }
+      .article .read { justify-self: start; margin-top: 6px; }
+      footer { flex-direction: column; gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <div class="identity">Writer · oral historian · Berkeley, California</div>
+    <nav aria-label="Primary navigation">
+      <a href="#arts">Arts</a>
+      <a href="#politics">Politics</a>
+      <a href="#food-community">Food &amp; community</a>
+      <a href="#project">Oral history</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="shell hero" aria-labelledby="hero-title">
+      <p class="kicker">Eythana Miller</p>
+      <h1 id="hero-title">Reporting, essays, and oral history.</h1>
+      <p class="hero-intro">I’m a writer and oral historian from Libby, Montana. I write about language, communities, education, and public life, and I direct <em>Heritage in Translation</em>, an oral history of my home community.</p>
+    </section>
+
+    <section class="shell section" id="writing" aria-labelledby="featured-work-title">
+      <div class="section-head">
+        <span class="section-number">Featured article + oral history</span>
+        <h2 id="featured-work-title">Featured work</h2>
+      </div>
+
+      <div class="spotlight-grid">
+        <article class="featured-piece">
+          <div class="meta">Featured piece<br>The Dial · June 2025</div>
+          <div>
+            <h3>Our Amish Language</h3>
+            <p>As my community modernized, we used Pennsylvania Dutch less and less. Now I’m trying to preserve it.</p>
+          </div>
+          <a class="read" href="https://www.thedial.world/articles/news/amish-pennsylvania-dutch" target="_blank" rel="noopener noreferrer">Read article</a>
+        </article>
+
+        <section class="project-card" id="project" aria-labelledby="project-title">
+          <div class="meta">Oral history project</div>
+          <div class="project-copy">
+            <h2 id="project-title">Heritage in Translation</h2>
+            <p>An oral history of an unconventional Amish community, told in the language in which its memories were made.</p>
+            <p>I conducted 38 interviews with members of my home community in Libby, Montana, about the years in which it slowly modernized out of an Old Order Amish lifestyle without officially leaving the church. The interviews were conducted in Pennsylvania Dutch and are presented with English captions.</p>
+          </div>
+          <a class="project-link" href="https://heritageintranslation.org" target="_blank" rel="noopener noreferrer">Watch the interviews at Heritage in Translation</a>
+        </section>
+      </div>
+
+      <div class="section-head">
+        <span class="section-number">24 published pieces</span>
+        <h2>Writing</h2>
+      </div>
+
+      <!-- WRITING: ARTS -->
+      <section class="category-block" id="arts" aria-labelledby="arts-title">
+        <div class="category-head">
+          <span class="category-count">10 pieces</span>
+          <h3 id="arts-title">Arts</h3>
+        </div>
+
+        <div class="articles" id="arts-articles" data-collapsed-count="3" data-label="arts pieces">
+          <article class="article">
+            <div class="meta">The Daily Californian<br>Sept. 19, 2025</div>
+            <div><h4>The case for a global literary imagination</h4><p>On translation, linguistic familiarity, and what American publishing misses when it rarely ventures beyond English.</p></div>
+            <a class="read" href="https://www.dailycal.org/weekender/commentary/the-case-for-a-global-literary-imagination/article_121ca63b-de9b-4792-b1a2-4464e349dd0b.html" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">The Daily Californian<br>May 3, 2025</div>
+            <div><h4>An Amish novel flattened my community into fiction</h4><p>A personal essay on creative freedom, insider knowledge, and what disappears when a living community becomes a setting.</p></div>
+            <a class="read" href="https://www.dailycal.org/weekender/personal_essays/an-amish-novel-flattened-my-community-into-fiction/article_962669b2-61a3-4bae-a608-a5155bf885e4.html" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">The Daily Californian<br>Jan. 29, 2025</div>
+            <div><h4>The fastest growing American language you’ve never heard of</h4><p>Pennsylvania Dutch, Standard German, and the strange illumination of finding the grammar of home in a college classroom.</p></div>
+            <a class="read" href="https://www.dailycal.org/weekender/features/the-fastest-growing-american-language-you-ve-never-heard-of/article_caf662f0-9f91-11ef-8c17-1bf860be360c.html" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">The Daily Californian<br>Dec. 14, 2024</div>
+            <div><h4>The sweet velvet of familiar places</h4><p>A memory of goat’s milk, winter chores, and the textures that make returning home feel familiar.</p></div>
+            <a class="read" href="https://www.dailycal.org/weekender/personal_essays/the-sweet-velvet-of-familiar-places/article_39547bc4-ba6d-11ef-a044-7fa168cbdd41.html" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">The Daily Californian<br>Dec. 7, 2024</div>
+            <div><h4>Stepping into an urban kaleidoscope: Seattle’s University District</h4><p>A personal essay on pavement, belonging, and the lively thrum of Seattle’s University District.</p></div>
+            <a class="read" href="https://www.dailycal.org/weekender/personal_essays/stepping-into-an-urban-kaleidoscope-seattle-s-university-district/article_e30a1d00-b5a3-11ef-8803-cfad18abee9e.html" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Metal Magazine<br>Sept. 23, 2024</div>
+            <div><h4>Luna Ikuta | English | Metal Magazine</h4><p>An interview about decellularized flowers, material experimentation, and making haunting work by hand.</p></div>
+            <a class="read" href="https://metalmagazine.eu/en/post/luna-ikuta" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Metal Magazine<br>Aug. 23, 2024</div>
+            <div><h4>Sayed Asif Mahmud | English | Metal Magazine</h4><p>A conversation about photographing food, daily life, and resilience in Yemen.</p></div>
+            <a class="read" href="https://metalmagazine.eu/en/post/sayed-asif-mahmud" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Metal Magazine<br>Aug. 18, 2024</div>
+            <div><h4>Sofia Laskari | English | Metal Magazine</h4><p>An interview on painting flesh, vulnerability, and the emotional discipline of a daily art practice.</p></div>
+            <a class="read" href="https://metalmagazine.eu/en/post/sofia-laskari" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Metal Magazine<br>Aug. 18, 2024</div>
+            <div><h4>Wara Vargas | English | Metal Magazine</h4><p>A conversation with the Bolivian photojournalist about cultural memory, Indigenous advocacy, and the women in her work.</p></div>
+            <a class="read" href="https://metalmagazine.eu/en/post/wara-vargas-interview" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- WRITING: POLITICS AND LOCAL ISSUES -->
+      <section class="category-block" id="politics" aria-labelledby="politics-title">
+        <div class="category-head">
+          <span class="category-count">5 pieces</span>
+          <h3 id="politics-title">Politics &amp; Local Issues</h3>
+        </div>
+        <div class="articles" id="politics-articles" data-collapsed-count="3" data-label="politics pieces">
+          <article class="article">
+            <div class="meta">The Daily Californian<br>Oct. 18, 2025</div>
+            <div><h4>From JFK to Oakland: A repealed tariff policy’s effect on overconsumption</h4><p>Following de minimis parcels through trade policy, the Port of Oakland, and America’s appetite for disposable abundance.</p></div>
+            <a class="read" href="https://www.dailycal.org/weekender/commentary/from-jfk-to-oakland-a-repealed-tariff-policy-s-effect-on-overconsumption/article_c8dd4896-3c67-4e9f-9a6c-bcc63ffb3fb2.html" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">The Daily Californian<br>Feb. 22, 2025</div>
+            <div><h4>Unpacking the U.S.’s biggest financial institution: A conversation with professor Trevor Jackson</h4><p>A discussion of the Federal Reserve, its unusual power, and how monetary decisions shape ordinary lives.</p></div>
+            <a class="read" href="https://www.dailycal.org/weekender/back-and-forth/unpacking-the-u-s-s-biggest-financial-institution-a-conversation-with-professor-trevor-jackson/article_004668f4-f151-11ef-8f5b-3fda9a34f96d.html" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">CalMatters<br>July 10, 2023</div>
+            <div><h4>California student: I have college loans but don't want my debt forgiven. Here's why</h4><p>A first-person argument about student debt, college access, and the costs that remain after forgiveness.</p></div>
+            <a class="read" href="https://calmatters.org/commentary/2023/07/california-student-loan-debt-forgiveness/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">A News Cafe<br>Aug. 10, 2022</div>
+            <div><h4>Prevalence of Shasta County Residents’ Early Trauma Explains High ACEs Scores; Hope Remains</h4><p>Reporting on adverse childhood experiences in Shasta County and the local work of building resilience.</p></div>
+            <a class="read" href="https://anewscafe.com/2022/08/10/redding/prevalence-of-shasta-county-residents-early-toxic-childhood-traumas-produce-high-aces-scores-hope-remains0/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Berkeley Political Review<br>July 11, 2023</div>
+            <div><h4>Why Student Debt Forgiveness Isn’t a Solution</h4><p>An argument for addressing the underlying cost of college rather than treating debt relief as a substitute for broader access.</p></div>
+            <a class="read" href="https://bpr.berkeley.edu/2022/11/01/why-student-debt-forgiveness-isnt-a-solution/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- WRITING: FOOD AND COMMUNITY -->
+      <section class="category-block" id="food-community" aria-labelledby="food-title">
+        <div class="category-head">
+          <span class="category-count">9 pieces</span>
+          <h3 id="food-title">Food &amp; Community</h3>
+        </div>
+        <div class="articles" id="community-articles" data-collapsed-count="3" data-label="food and community pieces">
+          <article class="article" data-featured>
+            <div class="meta">Edible Shasta Butte<br>March 22, 2023</div>
+            <div><h4>A Wise Elder</h4><p>The long history of the Redding Farmers Market, told through the growers and organizers who made it a community fixture.</p></div>
+            <a class="read" href="https://www.edibleshastabutte.com/online-magazine/spring-2023/a-wise-elder/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Enjoy Magazine<br>Feb. 26, 2023</div>
+            <div><h4>A Book to Love</h4><p>Inside Shop Around the Corner Books and its place in downtown Redding’s reading community.</p></div>
+            <a class="read" href="https://enjoymagazine.com/2023/02/a-book-to-love/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Enjoy Magazine<br>Jan. 29, 2023</div>
+            <div><h4>A Sweet Discovery</h4><p>How a Weaverville confectionery became a gathering place and a source of work for local teenagers.</p></div>
+            <a class="read" href="https://enjoymagazine.com/2023/01/a-sweet-discovery/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Enjoy Magazine<br>Oct. 26, 2022</div>
+            <div><h4>Better Together</h4><p>The story of a pie maker and sourdough baker who built a business and community space together.</p></div>
+            <a class="read" href="https://enjoymagazine.com/2022/10/better-together/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Enjoy Magazine<br>Sept. 29, 2022</div>
+            <div><h4>Climbing the Ladder</h4><p>Two Redding artists on mentorship, creative practice, and helping art find an audience.</p></div>
+            <a class="read" href="https://enjoymagazine.com/2022/09/climbing-the-ladder/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Enjoy Magazine<br>Aug. 29, 2022</div>
+            <div><h4>But First, Coffee</h4><p>Jim Milestone’s painted tour of Redding’s independent coffee houses and the community around them.</p></div>
+            <a class="read" href="https://enjoymagazine.com/2022/08/but-first-coffee/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article">
+            <div class="meta">Edible Shasta Butte<br>April 12, 2022</div>
+            <div><h4>Sharing Vines and Wine</h4><p>A visit with the owners of Dakaro Cellars, where hospitality and local connection shape the work.</p></div>
+            <a class="read" href="https://www.edibleshastabutte.com/online-magazine/spring-2022/sharing-vines-and-wine/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article" data-featured>
+            <div class="meta">Edible Shasta Butte<br>Dec. 15, 2021</div>
+            <div><h4>Artists at the Meal</h4><p>Four Redding-area makers whose cakes, candles, bread, and ceramics help shape the gathering table.</p></div>
+            <a class="read" href="https://www.edibleshastabutte.com/online-magazine/winter-2021/artists-at-the-meal/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+
+          <article class="article" data-featured>
+            <div class="meta">Edible Shasta Butte<br>Oct. 5, 2021</div>
+            <div><h4>Mission: Local Food Collaboration</h4><p>How a Redding micro-farm’s collaborative boxes connect eaters with local producers.</p></div>
+            <a class="read" href="https://www.edibleshastabutte.com/online-magazine/fall-2021/mission-local-food-collaboration/" target="_blank" rel="noopener noreferrer">Read article</a>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="shell section" id="about" aria-labelledby="about-title">
+      <div class="section-head">
+        <span class="section-number">About</span>
+        <h2 id="about-title">About me</h2>
+      </div>
+      <div class="about">
+        <div class="about-copy">
+          <p>I’m a writer and oral historian from Libby, Montana, where I was raised in an unconventional Amish community. Pennsylvania Dutch is my first language.</p>
+          <p>I earned a GED, attended Shasta College, and transferred to UC Berkeley, where I graduated in 2025 with a B.A. in Political Economy.</p>
+        </div>
+        <div class="about-note">
+          <p>My reporting and essays have appeared in <strong>The Dial</strong>, <strong>The Daily Californian</strong>, <strong>CalMatters</strong>, <strong>Metal Magazine</strong>, and elsewhere.</p>
+          <p>I’m a 2022 California Humanities Emerging Journalist fellow and the recipient of a 2025 Judith Lee Stronach Baccalaureate Prize.</p>
+        </div>
+      </div>
+      <p class="contact-line"><span class="contact-label">Contact</span><span id="contact-link"></span></p>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <span>© Eythana Miller</span>
+    <span>Writing · reporting · oral history</span>
+  </footer>
+
+  <script>
+    (function () {
+      document.querySelectorAll('.articles[data-collapsed-count]').forEach(function (list) {
+        var articles = Array.from(list.querySelectorAll('.article'));
+        var featured = articles.filter(function (article) { return article.hasAttribute('data-featured'); });
+        var remaining = articles.filter(function (article) { return !article.hasAttribute('data-featured'); });
+        var ordered = featured.concat(remaining);
+        var visibleCount = Number(list.getAttribute('data-collapsed-count'));
+        var hiddenArticles = ordered.slice(visibleCount);
+        var label = list.getAttribute('data-label');
+
+        ordered.forEach(function (article) { list.appendChild(article); });
+        hiddenArticles.forEach(function (article) { article.hidden = true; });
+
+        if (!hiddenArticles.length) return;
+
+        var button = document.createElement('button');
+        button.className = 'category-toggle';
+        button.type = 'button';
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-controls', list.id);
+        button.textContent = 'See ' + hiddenArticles.length + ' more ' + label;
+        list.insertAdjacentElement('afterend', button);
+
+        button.addEventListener('click', function () {
+          var expanded = button.getAttribute('aria-expanded') === 'true';
+          hiddenArticles.forEach(function (article) { article.hidden = expanded; });
+          button.setAttribute('aria-expanded', String(!expanded));
+          button.textContent = expanded ? 'See ' + hiddenArticles.length + ' more ' + label : 'Show fewer';
+        });
+      });
+
+      var mailbox = ['eyth', 'anam'].join('');
+      var host = ['gma', 'il', '.', 'com'].join('');
+      var address = mailbox + String.fromCharCode(64) + host;
+      var link = document.createElement('a');
+      link.href = 'mai' + 'lto:' + address;
+      link.textContent = address;
+      document.getElementById('contact-link').appendChild(link);
+    }());
+  </script>
+</body>
+</html>
