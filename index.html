@@ -4,6 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+      } catch (e) {}
+    }());
+  </script>
   <link rel="icon" href="data:," />
   <title>Eythana Miller — Writer &amp; Oral Historian</title>
   <meta name="description" content="Writing and oral history by Eythana Miller." />
@@ -63,6 +73,58 @@
         --shadow: 0 18px 48px rgba(0, 0, 0, .28);
       }
     }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --paper: #f4f1ea;
+      --surface: #fffdf7;
+      --ink: #171615;
+      --muted: #5a5653;
+      --line: #cbc5bc;
+      --line-strong: #857d74;
+      --burgundy: #8b2032;
+      --chartreuse: #d7f171;
+      --navy: #15253d;
+      --deep-brown: #33231f;
+      --rust: #7d1d2d;
+      --ochre: #91651f;
+      --hover-wash: #e8dade;
+      --feature-bg: #121825;
+      --feature-ink: #f7f2e8;
+      --feature-muted: #c9c2b8;
+      --section-heading-bg: #d7f171;
+      --section-heading-ink: #33231f;
+      --category-heading-bg: #8b2032;
+      --category-heading-ink: #fff8ef;
+      --shadow: 0 18px 48px rgba(22, 27, 22, .08);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #151313;
+      --surface: #1d1a19;
+      --ink: #f3ede5;
+      --muted: #c2b9b1;
+      --line: #433b38;
+      --line-strong: #796c66;
+      --burgundy: #8f2638;
+      --chartreuse: #dff27f;
+      --navy: #10213a;
+      --deep-brown: #2d1d19;
+      --rust: #e097a6;
+      --ochre: #d5ad5f;
+      --hover-wash: #35242a;
+      --feature-bg: #090d16;
+      --feature-ink: #f7f2e8;
+      --feature-muted: #c9c2b8;
+      --section-heading-bg: #dff27f;
+      --section-heading-ink: #211b18;
+      --category-heading-bg: #8f2638;
+      --category-heading-ink: #fff8ef;
+      --shadow: 0 18px 48px rgba(0, 0, 0, .28);
+    }
+    html[data-theme="light"] .article .pub { color: #b03044; }
+    html[data-theme="dark"] .article .pub { color: #d67a8a; }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -129,6 +191,18 @@
       font-size: .84rem;
       font-weight: 650;
     }
+    .theme-toggle {
+      padding: 4px 2px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .76rem;
+      letter-spacing: .03em;
+      cursor: pointer;
+    }
+    .theme-toggle:hover { color: var(--ink); }
+    .theme-toggle:focus-visible { outline: 3px solid var(--ochre); outline-offset: 3px; }
 
     .hero {
       position: relative;
@@ -420,6 +494,7 @@
       <a href="#food-community">Food &amp; community</a>
       <a href="#project">Oral history</a>
       <a href="#about">About</a>
+      <button class="theme-toggle" type="button" aria-label="Switch color theme">Dark</button>
     </nav>
   </header>
 
@@ -688,6 +763,25 @@
           button.textContent = expanded ? 'See ' + hiddenArticles.length + ' more ' + label : 'Show fewer';
         });
       });
+
+      var themeToggle = document.querySelector('.theme-toggle');
+      var themeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      function currentTheme() {
+        var explicit = document.documentElement.getAttribute('data-theme');
+        if (explicit === 'light' || explicit === 'dark') return explicit;
+        return themeQuery.matches ? 'dark' : 'light';
+      }
+      function syncThemeLabel() {
+        themeToggle.textContent = currentTheme() === 'dark' ? 'Light' : 'Dark';
+      }
+      themeToggle.addEventListener('click', function () {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        syncThemeLabel();
+      });
+      if (themeQuery.addEventListener) themeQuery.addEventListener('change', syncThemeLabel);
+      syncThemeLabel();
 
       var mailbox = ['eyth', 'anam'].join('');
       var host = ['gma', 'il', '.', 'com'].join('');
